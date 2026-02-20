@@ -1,0 +1,4 @@
+def start_sequence():
+    chosen_deck = input("Enter name of deck: ")
+    if chosen_deck in os.listdir(~/githubble/MTG_deck_sim/decklists):
+        working_deck = open()
