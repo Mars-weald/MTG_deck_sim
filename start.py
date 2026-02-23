@@ -1,5 +1,5 @@
 import os
-import deck
+from deck import *
 
 def start_sequence():
     chosen_deck = input("Enter name of deck file: ")
