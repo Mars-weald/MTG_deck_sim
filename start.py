@@ -6,8 +6,7 @@ def start_sequence():
     if chosen_deck in os.listdir("./decklists"):
         file = open(f"./decklists/{chosen_deck}")
         working_deck = file.read()
-        make_deck(working_deck)
+        library_sorted = make_deck(working_deck)
+        return library_sorted
     else:
         raise Exception("Deck file not found")
-
-start_sequence()
