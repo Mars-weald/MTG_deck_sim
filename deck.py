@@ -22,3 +22,8 @@ def build_deck(card_list):
 def shuffle(deck):
     random.shuffle(deck)
     return deck
+
+def draw_card(deck):
+    card = library[0]
+    del library[0]
+    print(card.name)

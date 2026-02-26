@@ -2,26 +2,29 @@ from start import *
 import sys
 
 def core_sequence(deck):
+    running = True
     mutable = deck.copy()
-    shuffle(mutable)
-    step = input("Enter one:\nmark cards\nshuffle\ndraw card\ndraw hand\nexit\n")
-    match step:
-        case "mark cards":
-            pass
-        case "shuffle":
-            shuffle(mutable)
-            print("Deck shuffled")
-        case "draw card":
-            card = mutable[0]
-            del mutable[0]
-            print(card.name)
-        case "draw hand":
-            hand = mutable[0:7]
-            del mutable[0:7]
-            for card in hand:
-                print(card.name)
-        case "exit":
-            sys.exit()
+    library = mutable.copy()
+    shuffle(library)
+    while running == True:
+        step = input("Enter one:\nmark cards\nshuffle\ndraw card\ndraw hand\nexit\n")
+        match step:
+            case "mark cards":
+                pass
+            case "shuffle":
+                shuffle(library)
+                print("Deck shuffled")
+            case "draw card":
+                draw_card(library)
+            case "draw hand":
+                hand_size = 7
+                x = 0
+                while x < hand_size:
+                    draw_card(library)
+                    x += 1
+            case "exit":
+                running = False
+                sys.exit()
 
 deck = start_sequence()
 core_sequence(deck)
