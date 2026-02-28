@@ -23,7 +23,10 @@ def shuffle(deck):
     random.shuffle(deck)
     return deck
 
-def draw_card(deck):
+def draw_card(library):
     card = library[0]
     del library[0]
-    print(card.name)
+    if card.is_marked == True:
+        print(f"*** {card.name} ***")
+    elif card.is_marked == False:
+        print(card.name)
