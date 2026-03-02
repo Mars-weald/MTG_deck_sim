@@ -1,5 +1,4 @@
 from start import *
-from marking_cards import *
 import sys
 
 def core_sequence(deck):
@@ -14,13 +13,36 @@ def core_sequence(deck):
             case "mark cards":
                 running = False
                 marking = True
-                marking_sequence(deck, marked_cards, marking, running)
+                while marking == True:
+                    mark = input("Type VIEW to view the list of marked cards\nType RETURN to return to the main menu\n")
+                    if mark == "VIEW":
+                        print("Marked Cards:\n")
+                        for name in marked_cards:
+                            print(name)
+                        print("----------")
+                    elif mark == "RETURN":
+                        marking = False
+                        for card in deck:
+                            if card.name in marked_cards:
+                                card.mark()
+                        running = True
+                    else:
+                        for thing in deck:
+                            if thing.name.lower() == mark.lower():
+                                if thing.name in marked_cards:
+                                    continue
+                                else:
+                                    marked_cards.append(thing.name)
+                                    print(f"{thing.name} marked\n----------\n")
+
             case "shuffle":
                 shuffle(library)
                 print("Deck shuffled\n----------")
+
             case "draw card":
                 draw_card(library)
                 print("----------")
+
             case "draw hand":
                 hand_size = 7
                 x = 0
@@ -28,6 +50,7 @@ def core_sequence(deck):
                     draw_card(library)
                     x += 1
                 print("---------")
+
             case "exit":
                 running = False
                 sys.exit()
