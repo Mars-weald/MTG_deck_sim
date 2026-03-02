@@ -8,13 +8,13 @@ def core_sequence(deck):
     shuffle(library)
     marked_cards = []
     while running == True:
-        step = input("\nEnter one:\nmark cards\nshuffle\ndraw card\ndraw hand\nexit\n----------\n")
+        step = input("\nEnter one:\nmark cards\nshuffle\ndraw card\ndraw hand\nreset\nexit\n----------\n")
         match step:
             case "mark cards":
                 running = False
                 marking = True
                 while marking == True:
-                    mark = input("Type VIEW to view the list of marked cards\nType RETURN to return to the main menu\n")
+                    mark = input("Type VIEW to view the list of marked cards\nType RETURN to return to the main menu\nType CLEAR LIST to reset marked cards\n")
                     if mark == "VIEW":
                         print("Marked Cards:\n")
                         for name in marked_cards:
@@ -26,6 +26,8 @@ def core_sequence(deck):
                             if card.name in marked_cards:
                                 card.mark()
                         running = True
+                    elif mark == "CLEAR LIST":
+                        marked_cards = []
                     else:
                         for thing in deck:
                             if thing.name.lower() == mark.lower():
@@ -51,9 +53,16 @@ def core_sequence(deck):
                     x += 1
                 print("---------")
 
+            case "reset":
+                library = deck.copy()
+                shuffle(library)
+
             case "exit":
                 running = False
                 sys.exit()
+
+            case _:
+                print("ERROR: Invalid command")
 
 deck = start_sequence()
 core_sequence(deck)
