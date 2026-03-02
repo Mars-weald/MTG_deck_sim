@@ -14,7 +14,7 @@ def core_sequence(deck):
             case "mark cards":
                 running = False
                 marking = True
-                marking_sequence(deck, marked_cards, marking)
+                marking_sequence(deck, marked_cards, marking, running)
             case "shuffle":
                 shuffle(library)
                 print("Deck shuffled\n----------")

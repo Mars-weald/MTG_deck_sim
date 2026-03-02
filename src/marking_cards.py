@@ -1,4 +1,4 @@
-def marking_sequence(deck, marked_cards, marking):
+def marking_sequence(deck, marked_cards, marking, running):
     while marking == True:
         mark = input("Type VIEW to view the list of marked cards\nType RETURN to return to the main menu\n")
         if mark == "VIEW":
@@ -9,6 +9,7 @@ def marking_sequence(deck, marked_cards, marking):
         elif mark == "RETURN":
             marking = False
             running = True
+            menu(running)
         else:
             for thing in deck:
                 if thing.name.lower() == mark.lower():
@@ -16,3 +17,4 @@ def marking_sequence(deck, marked_cards, marking):
                         continue
                     else:
                         marked_cards.append(thing.name)
+                        print(f"{thing.name} marked\n----------\n")
