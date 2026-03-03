@@ -24,9 +24,12 @@ def shuffle(deck):
     return deck
 
 def draw_card(library):
+    if len(library) == 0:
+        print("No cards left\n")
+        return
     card = library[0]
     del library[0]
     if card.is_marked == True:
-        print(f"*** {card.name} ***")
+        print(f"| {card.name} |")
     elif card.is_marked == False:
         print(card.name)
